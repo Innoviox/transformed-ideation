@@ -8,3 +8,8 @@ body {
     border-color: transparent;
     color: #fff;
 }
+
+.flashcard {
+    border: 1px #000000 solid;
+    background-color: #ffffff;
+}

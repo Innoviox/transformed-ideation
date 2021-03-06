@@ -2,26 +2,70 @@
 <head>
     <link href="css/bulma.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/flip.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-full has-text-centered"><h1 class="title">Flashable</h1></div>
-        </div>
-
-        <div class="columns is-centered">
-            <div class="column is-full has-text-centered"><h2 class="subtitle"><i>Next-Generation Flashcard Creation</i></h2></div>
-        </div>
-
-        <form id="form1">
-            <div class="columns is-centered">
-                <div class="column is-three-fifths">
-                    <input placeholder="Enter Article URL">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front container">
+                <div class="columns is-centered">
+                    <div class="column is-full has-text-centered"><h1 class="title">Flashable</h1></div>
                 </div>
-                <div class="column"><a class="button is-queen-blue">Upload File</a></div>
-                <div class="column"><a class="button is-queen-blue">Extract</a></div>
+
+                <div class="columns is-centered">
+                    <div class="column is-full has-text-centered"><h2 class="subtitle"><i>Next-Generation Flashcard Creation</i></h2></div>
+                </div>
+
+                <form id="form1">
+                    <div class="columns is-centered">
+                        <div class="column is-2"></div>
+                        <div class="column is-4">
+                            <input class="input" type="text" placeholder="Enter Article URL">
+                        </div>
+                        <div class="column is-2"><a class="button is-queen-blue is-fullwidth">Upload File</a></div>
+                        <div class="column is-2"><a class="button is-queen-blue is-fullwidth">Extract</a></div>
+                        <div class="column is-2"></div>
+                    </div>
+
+                    <div class="columns">
+                        <div class="column is-2"></div>
+                        <div class="column is-8">
+                            <textarea class="textarea" placeholder="Paste text here..."></textarea>
+                        </div>
+                        <div class="column is-2"></div>
+                    </div>
+                </form>
             </div>
-        </form>
+            <div class="flip-card-back">
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+                <h1>John Doe</h1>
+                <p>Architect & Engineer</p>
+                <p>We love that guy</p>
+            </div>
+        </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

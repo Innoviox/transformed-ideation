@@ -2,3 +2,9 @@ body {
     padding: 50px;
     background-color: #fbf9f1;
 }
+
+.is-queen-blue {
+    background-color: #33658A;
+    border-color: transparent;
+    color: #fff;
+}

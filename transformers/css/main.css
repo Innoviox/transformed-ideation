@@ -32,7 +32,7 @@ html, body {
     flex-basis: 50%;
     height: 100vh;
     overflow: auto;
-    padding: 20px;
+    padding: 12px;
 }
 
 .left::-webkit-scrollbar,

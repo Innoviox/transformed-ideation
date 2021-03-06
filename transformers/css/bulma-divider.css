@@ -41,12 +41,12 @@
 
 /* line 37, src/sass/app.sass */
 .divider:not(.is-right)::after {
-  margin-left: 10px;
+  /*margin-left: 10px;*/
 }
 
 /* line 41, src/sass/app.sass */
 .divider:not(.is-left)::before {
-  margin-right: 10px;
+  /*margin-right: 10px;*/
 }
 
 /* line 45, src/sass/app.sass */
@@ -74,13 +74,13 @@
 /* line 61, src/sass/app.sass */
 .divider.is-vertical::after {
   margin-left: 0;
-  margin-top: 10px;
+  /*margin-top: 10px;*/
 }
 
 /* line 65, src/sass/app.sass */
 .divider.is-vertical::before {
   margin-right: 0;
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
 }
 
 /* line 72, src/sass/app.sass */

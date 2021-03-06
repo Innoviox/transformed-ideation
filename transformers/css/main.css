@@ -13,3 +13,22 @@ body {
     border: 1px #000000 solid;
     background-color: #ffffff;
 }
+
+.wrap {
+    display: flex;
+}
+
+.left {
+    flex-basis: 50%;
+}
+
+.right {
+    flex-basis: 80%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.left::-webkit-scrollbar,
+.right::-webkit-scrollbar {
+    display: none;
+}

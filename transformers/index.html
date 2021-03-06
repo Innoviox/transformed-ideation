@@ -2,8 +2,10 @@
 <head>
     <link href="css/bulma.css" rel="stylesheet">
     <link href="css/bulma-divider.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="css/tether.min.css" rel="stylesheet">
+
     <link href="css/flip.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
     <div class="flip-card">
@@ -40,17 +42,234 @@
             <div class="flip-card-back">
                 <div class="columns">
                     <div class="column">
-                        <h1 class="title">Original Text</h1>
-                        <a class="button is-queen-blue is-fullwidth">Regenerate</a>
-                        <textarea class="textarea" placeholder="Paste text here..."></textarea>
+                        <!--<h1 class="title">Original Text</h1>-->
+                        <!--<a class="button is-queen-blue is-fullwidth pb-2">Regenerate</a>-->
+                        <textarea readonly class="textarea" placeholder="Paste text here..."></textarea>
                     </div>
                     <div class="divider is-vertical"></div>
                     <div class="column">
-                        <div class="pb-1">
-                            <a class="button is-queen-blue">Add Flashcard</a>
-                            <a class="button is-queen-blue">Export</a>
+                        <div class="columns pb-1">
+                            <a class="column is-5 is-fullwidth button is-queen-blue">Add Flashcard</a>
+                            <div class="column is-2"></div>
+                            <a class="column is-5 is-fullwidth button is-queen-blue">Export</a>
                         </div>
                         <div class="flashcards">
+                            <div class="flashcard notification">
+                            <button class="delete"></button>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Front</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <p class="control">
+                                            <input class="input" type="text" placeholder="Text">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                    <label class="label">Back</label>
+                                </div>
+                                <div class="field-body">
+                                    <div class="field">
+                                        <p class="control">
+                                            <input class="input" type="text" placeholder="Text">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="flashcard notification">
+                                <button class="delete"></button>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Front</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Back</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flashcard notification">
+                                <button class="delete"></button>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Front</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Back</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flashcard notification">
+                                <button class="delete"></button>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Front</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Back</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flashcard notification">
+                                <button class="delete"></button>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Front</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Back</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flashcard notification">
+                                <button class="delete"></button>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Front</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Back</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flashcard notification">
+                                <button class="delete"></button>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Front</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Back</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flashcard notification">
+                                <button class="delete"></button>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Front</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                        <label class="label">Back</label>
+                                    </div>
+                                    <div class="field-body">
+                                        <div class="field">
+                                            <p class="control">
+                                                <input class="input" type="text" placeholder="Text">
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="flashcard notification">
                                 <button class="delete"></button>
                                 <div class="field is-horizontal">
@@ -86,6 +305,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script src="js/tether.min.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

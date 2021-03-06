@@ -1,6 +1,9 @@
-$("#extract").click(() => {
+let flip = () => {
     $(".flip-card-inner").toggleClass("flipped");
-});
+}
+
+$("#extract").click(flip);
+$("#upload-new").click(flip);
 
 // let t = new Tether({
 //     element: $("#element"),

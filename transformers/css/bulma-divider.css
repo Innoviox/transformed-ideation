@@ -162,3 +162,7 @@
 .divider.is-danger.is-light::after, .divider.is-danger.is-light::before {
   background-color: #feecf0;
 }
+
+.divider {
+  max-height: 100vh;
+}

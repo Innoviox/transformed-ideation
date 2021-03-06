@@ -3,6 +3,12 @@ body {
     background-color: #fbf9f1;
 }
 
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
+
 .is-queen-blue {
     background-color: #33658A;
     border-color: transparent;
@@ -23,9 +29,10 @@ body {
 }
 
 .right {
-    flex-basis: 80%;
+    flex-basis: 50%;
     height: 100vh;
     overflow: auto;
+    padding: 20px;
 }
 
 .left::-webkit-scrollbar,

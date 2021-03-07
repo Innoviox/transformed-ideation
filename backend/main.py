@@ -13,7 +13,7 @@ from typing import List, Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from question_generation.pipelines import pipeline
+from pipelines import pipeline
 from fastapi.templating import Jinja2Templates
 
 # Utils
@@ -22,7 +22,7 @@ def get_article_text(url):
     article = Article(url)
     article.download()
     article.parse()
-    return article.text.lower() # Convert to lowercase to reduce chance of mismatch
+    return article.text# Convert to lowercase to reduce chance of mismatch
 
 models = {}
 app = FastAPI(title="Flashable")
@@ -65,7 +65,7 @@ def use_route_names_as_operation_ids(app: FastAPI) -> None:
 def read_text(
         text: str
 ):
-    cards = models["basic"](text)
+    cards = models["basic"](text.lower())
     print(cards)
     return FlashcardSet(flashcards=cards, source_text=text)
 
@@ -83,7 +83,7 @@ def read_link(
         url: str
 ):
     # Prevent mismatching bugs
-    text = get_article_text(url)
+    text = get_article_text(url).lower()
     print(url)
     print(text)
     cards = models["basic"](text)

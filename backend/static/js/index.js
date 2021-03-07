@@ -106,7 +106,7 @@ let add = (front, back) => {
     del();
 };
 
-$("#add").click(add);
+$("#add").click(() => add("", ""));
 // $(document).ready(add);
 
 $('#input-file').change(() => {

@@ -1,3 +1,5 @@
+import io
+
 import pdftotext
 from docx import Document
 import re
@@ -11,14 +13,14 @@ def read(file):
     elif mimetype == "application/msword" or mimetype == "application/octet-stream"\
         or mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
         with file.file as f:
-            docReader = Document(f)
+            docReader = Document(io.BytesIO(f.read()))
             content = []
             for p in docReader.paragraphs:
                 content.append(p.text)
             return ' '.join(content)
     elif mimetype == "text/plain":
         with file.file as f:
-            return remNewline(f.read())
+            return remNewline(f.read().decode())
     else:
         print("File type", mimetype, "not recognized.")
 

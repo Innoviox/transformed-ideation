@@ -16,7 +16,7 @@ from fastapi.templating import Jinja2Templates
 
 from readFromFile import read
 
-NO_MODEL=True
+NO_MODEL=False
 # Utils
 
 def get_article_text(url):
@@ -29,7 +29,7 @@ models = {}
 
 if NO_MODEL:
     models["basic"] = lambda x: None
-    
+
 app = FastAPI(title="Flashable")
 
 # Initialize models
@@ -93,7 +93,7 @@ def read_text(
     text=item.payload.lower()
     cards = models["basic"](text)
     print(cards)
-    return FlashcardSet(flashcards=MOCK_CARDS, source_text=text)
+    return FlashcardSet(flashcards=cards, source_text=text)
 
 
 @app.post("/file", response_model=FlashcardSet)
@@ -102,8 +102,8 @@ def read_file(
 ):
     text = read(file)
     print("got file", file, "mimetype", file.content_type)
-    print(text)
-    return FlashcardSet(flashcards=MOCK_CARDS, source_text=text)
+    cards = models["basic"](text)
+    return FlashcardSet(flashcards=cards, source_text=text)
 
 
 @app.post("/link", response_model=FlashcardSet)
@@ -117,4 +117,4 @@ def read_link(
     print(url)
     print(text)
     cards = models["basic"](text)
-    return FlashcardSet(flashcards=MOCK_CARDS, source_text=text)
+    return FlashcardSet(flashcards=cards, source_text=text)

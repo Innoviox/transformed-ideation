@@ -48,6 +48,8 @@ $("#extract").click(async () => {
         console.log(c);
         add(c["question"], c["answer"]);
     }
+
+    $("#source-text").val(source_text);
     flip();
 });
 

@@ -23,6 +23,6 @@ def read(file):
         print("File type", mimetype, "not recognized.")
 
 def remNewline(text):
-    remHyphenated = re.replace("-\\n", "", text)
-    remNew = re.replace("(?<!-)\\n", " ", remHyphenated)
+    remHyphenated = re.sub("-\\n", "", text)
+    remNew = re.sub("(?<!-)\\n", " ", remHyphenated)
     return remNew

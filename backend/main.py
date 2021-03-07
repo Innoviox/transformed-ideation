@@ -65,7 +65,7 @@ def use_route_names_as_operation_ids(app: FastAPI) -> None:
         if isinstance(route, APIRoute):
             route.operation_id = route.name
 
-@app.get("/text", response_model=FlashcardSet)
+@app.post("/text", response_model=FlashcardSet)
 def read_text(
         text: str
 ):
@@ -74,7 +74,7 @@ def read_text(
     return FlashcardSet(flashcards=cards, source_text=text)
 
 
-@app.put("/file", response_model=FlashcardSet)
+@app.post("/file", response_model=FlashcardSet)
 def read_file(
         file: UploadFile = File(...)
 ):
@@ -84,7 +84,7 @@ def read_file(
     return FlashcardSet(flashcards=[], source_text=text)
 
 
-@app.get("/link", response_model=FlashcardSet)
+@app.post("/link", response_model=FlashcardSet)
 def read_link(
         url: str
 ):

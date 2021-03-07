@@ -16,33 +16,7 @@ let del = () => $(".delete-flashcard").click((e) => {
 });
 
 let add = () => {
-    document.getElementById('flashcards').insertAdjacentHTML('beforeend', '<div class="flashcard notification">\n' +
-        '                                <button class="delete delete-flashcard"></button>\n' +
-        '                                <div class="field is-horizontal">\n' +
-        '                                    <div class="field-label is-normal">\n' +
-        '                                        <label class="label">Front</label>\n' +
-        '                                    </div>\n' +
-        '                                    <div class="field-body">\n' +
-        '                                        <div class="field">\n' +
-        '                                            <p class="control">\n' +
-        '                                                <input class="input" type="text" placeholder="Text">\n' +
-        '                                            </p>\n' +
-        '                                        </div>\n' +
-        '                                    </div>\n' +
-        '                                </div>\n' +
-        '                                <div class="field is-horizontal">\n' +
-        '                                    <div class="field-label is-normal">\n' +
-        '                                        <label class="label">Back</label>\n' +
-        '                                    </div>\n' +
-        '                                    <div class="field-body">\n' +
-        '                                        <div class="field">\n' +
-        '                                            <p class="control">\n' +
-        '                                                <input class="input" type="text" placeholder="Text">\n' +
-        '                                            </p>\n' +
-        '                                        </div>\n' +
-        '                                    </div>\n' +
-        '                                </div>\n' +
-        '                            </div>');
+    document.getElementById('flashcards').insertAdjacentHTML('beforeend', '<div class="flashcard notification"><button class="delete delete-flashcard"></button><div class="field is-horizontal"><div class="field-label is-normal"><label class="label">Front</label></div><div class="field-body"><div class="field"><p class="control"><input class="input" type="text" placeholder="Text"></p></div></div></div><div class="field is-horizontal"><div class="field-label is-normal"><label class="label">Back</label></div><div class="field-body"><div class="field"><p class="control"><input class="input" type="text" placeholder="Text"></p></div></div></div></div>');
     del();
 };
 

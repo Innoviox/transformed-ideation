@@ -4,68 +4,56 @@ let flip = () => {
     $(".flip-card-inner").toggleClass("flipped");
 };
 
-$("#extract").click(() => {
+$("#extract").click(async () => {
 
     var url = document.querySelector('#input-url');
     var file = document.querySelector('#input-file');
     var raw = document.querySelector('#input-raw');
 
+    var response;
     if (url.value != "") {
         console.log("url");
         
         var payload = {"payload": url.value}
-        axios.post('/link', payload);
+        const res = await axios.post('/link', payload);
+        response = res.data
     } else if (file.value != "") {
         console.log("file");
 
         var formData = new FormData();
         formData.append("file", file.files[0]);
-        axios.post('/file', formData, {
+        const res = await axios.post('/file', formData, {
             headers: {
             'Content-Type': 'multipart/form-data'
             }
         });
+        response = res.data
     } else if (raw.value != "") {
         console.log("raw");
 
         var payload = {"payload": raw.value}
-        axios.post('/text', payload);
+        const res = await axios.post('/text', payload);
+        response = res.data
     }
-    // console.log(url.value);
-    // console.log(file.value);
-    // console.log(raw.value);
+    
+    console.log(response);
+    var source_text = response["source_text"];
+    var cards = response["flashcards"];
+
+    console.log(source_text);
+    console.log(cards);
+
+    for (var i = 0; i < cards.length; i++){
+        var c = cards[i];
+        console.log(c);
+        add(c["question"], c["answer"]);
+    }
+    flip();
 });
 
 
 $("#upload-new").click(() => {
-    // Check with precedence
-
-    // let fdata = new FormData();
-    // if (input_type === 0) {
-    //     fdata.append("link", $("#url").val());
-    // } else {
-    //     fdata.append("file", document.getElementById('file').files[0]);
-    // }
-
-    // $.ajax({
-    //     url: "/link",
-    //     data: fdata,
-    //     cache: false,
-    //     processData: false,
-    //     contentType: false,
-    //     type: 'POST',
-    //     success: function (dataofconfirm) {
-    //         flip();
-    //     }
-    // });
-    
     flip();
-    // formData.append("image", file.files[0]);
-    // axios.post('upload_file', formData, {
-    //     headers: {
-    //     'Content-Type': 'multipart/form-data'
-    //     }
-    // });
 });
 
 let modal = () => {
@@ -82,7 +70,8 @@ let del = () => $(".delete-flashcard").click((e) => {
 let add = (front, back) => {
     console.log(front);
     console.log(back);
-    document.getElementById('flashcards').insertAdjacentHTML('beforeend', '<div class="flashcard notification"><button class="delete delete-flashcard"></button><div class="field is-horizontal"><div class="field-label is-normal"><label class="label">Front</label></div><div class="field-body"><div class="field"><p class="control"><input class="input" type="text" placeholder="Text"></p></div></div></div><div class="field is-horizontal"><div class="field-label is-normal"><label class="label">Back</label></div><div class="field-body"><div class="field"><p class="control"><input class="input" type="text" placeholder="Text"></p></div></div></div></div>');
+    document.getElementById('flashcards').insertAdjacentHTML('beforeend', 
+`<div class="flashcard notification"><button class="delete delete-flashcard"></button> <div class="field is-horizontal"> <div class="field-label is-normal"><label class="label">front</label></div> <div class="field-body"> <div class="field"> <p class="control"><input class="input" type="text" value="${front}"></p> </div> </div> </div> <div class="field is-horizontal"> <div class="field-label is-normal"><label class="label">back</label></div> <div class="field-body"> <div class="field"> <p class="control"><input class="input" type="text" value="${back}"></p> </div> </div> </div> </div>`    );
     del();
 };
 

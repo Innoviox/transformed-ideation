@@ -26,6 +26,10 @@ def get_article_text(url):
     return article.text# Convert to lowercase to reduce chance of mismatch
 
 models = {}
+
+if NO_MODEL:
+    models["basic"] = lambda x: None
+    
 app = FastAPI(title="Flashable")
 
 # Initialize models
@@ -74,14 +78,22 @@ def use_route_names_as_operation_ids(app: FastAPI) -> None:
 class Schema(BaseModel):
     payload: str
 
+MOCK_CARDS = [
+    {"question": "why?", "answer": "no duh"}, 
+    {"question": "why?", "answer": "no duh"},
+    {"question": "why?", "answer": "no duh"},
+    {"question": "why?", "answer": "no duh"},
+]
+MOCK_TEXT = "Lorem Ipsum"
+
 @app.post("/text", response_model=FlashcardSet)
 def read_text(
         item: Schema
 ):
-    print(item.payload.lower())
-    cards = models["basic"](item.payload.lower())
+    text=item.payload.lower()
+    cards = models["basic"](text)
     print(cards)
-    return FlashcardSet(flashcards=cards, source_text=text)
+    return FlashcardSet(flashcards=MOCK_CARDS, source_text=text)
 
 
 @app.post("/file", response_model=FlashcardSet)
@@ -91,7 +103,7 @@ def read_file(
     text = read(file)
     print("got file", file, "mimetype", file.content_type)
     print(text)
-    return FlashcardSet(flashcards=[], source_text="")
+    return FlashcardSet(flashcards=MOCK_CARDS, source_text=text)
 
 
 @app.post("/link", response_model=FlashcardSet)
@@ -105,4 +117,4 @@ def read_link(
     print(url)
     print(text)
     cards = models["basic"](text)
-    return FlashcardSet(flashcards=cards, source_text=text)
+    return FlashcardSet(flashcards=MOCK_CARDS, source_text=text)

@@ -105,7 +105,7 @@ let add = (front, back) => {
 };
 
 $("#add").click(add);
-$(document).ready(add);
+// $(document).ready(add);
 
 $('#input-file').change(() => {
     input_type = 1;

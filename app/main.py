@@ -6,6 +6,10 @@ from typing import List, Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+from question_generation.pipelines import pipeline
+nlp = pipeline("question-generation")
+
+
 def get_article_text(url):
    article = Article(url)
    article.download()
@@ -31,12 +35,14 @@ class Collection(BaseModel):
 @app.put("/cards/link/", response_model=Collection)
 async def cards_link(item: RequestUrl):
    text = get_article_text(item.url)
-   return {"cards": [{"question": "Why?", "answer": f"{text[:10]}"}]}
+   cards = nlp(text)
+   return {"cards": cards}
 
 @app.put("/cards/raw", response_model=Collection)
 async def cards_raw(item: RequestRaw):
    text = item.body
-   return {"cards": [{"question": "Why?", "answer": f"{text[:10]}"}]}
+   cards = nlp(text)
+   return {"cards": cards}
 
 
 

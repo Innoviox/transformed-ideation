@@ -25,7 +25,7 @@ $(document).ready(add);
 
 $('#file').change(() => {
     $("#file-holder").toggleClass("has-name");
-    $(".file-name").text($("#file").val()).toggleClass("is-hidden");
+    $(".file-name").text(document.getElementById("file").files[0].name).toggleClass("is-hidden");
     $("#col-b").removeClass("is-4").addClass("is-2");
     $("#col-c").removeClass("is-2").addClass("is-4");
     $("#file-upload").removeClass("file-upload-full");

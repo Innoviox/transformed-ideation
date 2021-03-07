@@ -74,7 +74,7 @@ def read_text(
     return FlashcardSet(flashcards=cards, source_text=text)
 
 
-@app.get("/file", response_model=FlashcardSet)
+@app.put("/file", response_model=FlashcardSet)
 def read_file(
         file: UploadFile = File(...)
 ):

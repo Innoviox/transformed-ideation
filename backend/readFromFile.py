@@ -6,7 +6,7 @@ def read(file):
     if mimetype == "application/pdf" or mimetype == "application/x-pdf":
         with file.file as f:
             pdfReader = pdftotext.PDF(f)
-            return "\n\n".join(pdfReader)
+            return " ".join(pdfReader)
     elif mimetype == "application/msword" or mimetype == "application/octet-stream"\
         or mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
         with file.file as f:
@@ -14,9 +14,12 @@ def read(file):
             content = []
             for p in docReader.paragraphs:
                 content.append(p.text)
-            return '\n'.join(content)
+            return ' '.join(content)
     elif mimetype == "text/plain":
         with file.file as f:
             return f.read()
     else:
         print("File type", mimetype, "not recognized.")
+
+def remNewline(text):
+    

@@ -89,14 +89,6 @@ function download(filename, text) {
     document.body.removeChild(element);
 }
 
-Array.prototype.pairs = function (func) {
-    for (var i = 0; i < this.length - 1; i++) {
-        for (var j = i; j < this.length - 1; j++) {
-            func([this[i], this[j+1]]);
-        }
-    }
-};
-
 $("#export").click(() => {
     let s = "";
     let k = 0;

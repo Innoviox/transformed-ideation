@@ -1,12 +1,13 @@
 import pdftotext
 from docx import Document
+import re
 
 def read(file):
     mimetype = file.content_type
     if mimetype == "application/pdf" or mimetype == "application/x-pdf":
         with file.file as f:
             pdfReader = pdftotext.PDF(f)
-            return " ".join(pdfReader)
+            return remNewline(" ".join(pdfReader))
     elif mimetype == "application/msword" or mimetype == "application/octet-stream"\
         or mimetype == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
         with file.file as f:
@@ -22,4 +23,6 @@ def read(file):
         print("File type", mimetype, "not recognized.")
 
 def remNewline(text):
-    
+    remHyphenated = re.replace("-\\n", "", text)
+    remNew = re.replace("(?<!-)\\n", " ", remHyphenated)
+    return remNew

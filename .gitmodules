@@ -1,0 +1,3 @@
+[submodule "backend/question_generation"]
+	path = backend/question_generation
+	url = https://github.com/patil-suraj/question_generation

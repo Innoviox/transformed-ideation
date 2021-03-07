@@ -16,6 +16,7 @@ from fastapi.templating import Jinja2Templates
 
 from readFromFile import read
 
+NO_MODEL=True
 # Utils
 
 def get_article_text(url):
@@ -30,7 +31,8 @@ app = FastAPI(title="Flashable")
 # Initialize models
 @app.on_event("startup")
 def startup_event():
-    models["basic"] = pipeline("question-generation")
+    if not NO_MODEL:
+        models["basic"] = pipeline("question-generation")
 
 # Docs at http://127.0.0.1:8000/docs
 
@@ -54,6 +56,10 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def read_item(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
+@app.get("/form", response_class=HTMLResponse)
+async def read_item(request: Request):
+    return templates.TemplateResponse("form.html", {"request": request})
+
 def use_route_names_as_operation_ids(app: FastAPI) -> None:
     """
     Simplify operation IDs so that generated API clients have simpler function
@@ -65,11 +71,15 @@ def use_route_names_as_operation_ids(app: FastAPI) -> None:
         if isinstance(route, APIRoute):
             route.operation_id = route.name
 
+class Schema(BaseModel):
+    payload: str
+
 @app.post("/text", response_model=FlashcardSet)
 def read_text(
-        text: str
+        item: Schema
 ):
-    cards = models["basic"](text.lower())
+    print(item.payload.lower())
+    cards = models["basic"](item.payload.lower())
     print(cards)
     return FlashcardSet(flashcards=cards, source_text=text)
 
@@ -81,15 +91,17 @@ def read_file(
     text = read(file)
     print("got file", file, "mimetype", file.content_type)
     print(text)
-    return FlashcardSet(flashcards=[], source_text=text)
+    return FlashcardSet(flashcards=[], source_text="")
 
 
 @app.post("/link", response_model=FlashcardSet)
 def read_link(
-        url: str
+        item: Schema
 ):
     # Prevent mismatching bugs
+    url = item.payload
     text = get_article_text(url).lower()
+
     print(url)
     print(text)
     cards = models["basic"](text)

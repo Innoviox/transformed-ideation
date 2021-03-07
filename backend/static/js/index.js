@@ -81,8 +81,12 @@ function download(filename, text) {
 $("#export").click(() => {
     let s = "";
     let k = 0;
-    for (let i of $(".flashcard").find(":input[type=text]")) {
-        s += i.value;
+    for (let i of $(".flashcard").find("textarea")) {
+        // console.log(i);
+        s += `"${i.value}"`;
+        console.log(i);
+        console.log(i.value);
+        console.log("---------")
         if (k % 2 === 0) {
             s += "\t";
         } else {
@@ -98,15 +102,17 @@ let del = () => $(".delete-flashcard").click((e) => {
     e.target.parentElement.remove();
 });
 
-let add = (front, back) => {
-    console.log(front);
-    console.log(back);
-    document.getElementById('flashcards').insertAdjacentHTML('beforeend', 
-`<div class="flashcard notification"><button class="delete delete-flashcard"></button> <div class="field is-horizontal"> <div class="field-label is-normal"><label class="label">front</label></div> <div class="field-body"> <div class="field"> <p class="control"><input class="input" type="text" value="${front}"></p> </div> </div> </div> <div class="field is-horizontal"> <div class="field-label is-normal"><label class="label">back</label></div> <div class="field-body"> <div class="field"> <p class="control"><input class="input" type="text" value="${back}"></p> </div> </div> </div> </div>`    );
+let add = (front="", back="") => {
+    console.log("FRONT: " + front);
+    console.log("BACK " + back);
+    document.getElementById('flashcards').insertAdjacentHTML(
+        'beforeend', 
+        `<div class="flashcard notification"><button class="delete delete-flashcard"></button> <div class="field is-horizontal"> <div class="field-label is-normal"><label class="label">front</label></div> <div class="field-body"> <div class="field"> <p class="control"><textarea name="Text1" cols="40" rows="5">${front}</textarea></p> </div> </div> </div> <div class="field is-horizontal"> <div class="field-label is-normal"><label class="label">back</label></div> <div class="field-body"> <div class="field"> <p class="control"><textarea name="Text1" cols="40" rows="5">${back}</textarea></p> </div> </div> </div> </div>`,
+    );
     del();
 };
 
-$("#add").click(add);
+$("#add").click(() => {add()});
 // $(document).ready(add);
 
 $('#input-file').change(() => {

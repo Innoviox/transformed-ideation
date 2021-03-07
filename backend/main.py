@@ -13,7 +13,7 @@ from typing import List, Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from pipelines import pipeline
+from pipelines import qg_pipeline as pipeline
 from fastapi.templating import Jinja2Templates
 
 # Utils

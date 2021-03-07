@@ -41,7 +41,7 @@ html, body {
 }
 
 .file-upload-full {
-    /*width: 100%;*/
+    width: 100%;
     padding-left: 35%;
     /*padding-left: 0em;*/
     justify-content: center;

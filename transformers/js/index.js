@@ -26,8 +26,19 @@ $(document).ready(add);
 $('#file').change(() => {
     $("#file-holder").toggleClass("has-name");
     $(".file-name").text($("#file").val()).toggleClass("is-hidden");
-    // $('#col-a').hide();
-    $("#col-b").hide();
-    $("#col-c").removeClass("is-2").addClass("is-6");
+    $("#col-b").removeClass("is-4").addClass("is-2");
+    $("#col-c").removeClass("is-2").addClass("is-4");
     $("#file-upload").removeClass("file-upload-full");
+    $("#enter-url-input").hide();
+    $("#enter-url-button").toggleClass("is-hidden").show();
+});
+
+$("#enter-url-button").click(() => {
+    $("#file-holder").toggleClass("has-name");
+    $(".file-name").text($("#file").val()).toggleClass("is-hidden");
+    $("#col-b").removeClass("is-2").addClass("is-4");
+    $("#col-c").removeClass("is-4").addClass("is-2");
+    $("#file-upload").addClass("file-upload-full");
+    $("#enter-url-input").show();
+    $("#enter-url-button").toggleClass("is-hidden").hide();
 });

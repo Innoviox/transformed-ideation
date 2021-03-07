@@ -8,9 +8,7 @@ from fastapi.routing import APIRoute
 from fastapi import FastAPI, File, UploadFile
 from typing import Optional, List
 from newspaper import Article
-from typing import List, Optional
 
-from fastapi import FastAPI
 from pydantic import BaseModel
 
 from pipelines import qg_pipeline as pipeline

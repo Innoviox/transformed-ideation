@@ -12,6 +12,7 @@ from transformers import(
     PreTrainedTokenizer,
 )
 
+# Code modified from https://github.com/patil-suraj/question_generation
 logger = logging.getLogger(__name__)
 
 class QGPipeline:

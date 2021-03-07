@@ -50,3 +50,7 @@ html, body {
 .file {
     text-align: center;
 }
+
+#source-text {
+    height: 500px;
+}

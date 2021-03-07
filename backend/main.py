@@ -1,9 +1,12 @@
 from typing import Optional, List
 
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
 from fastapi.routing import APIRoute
 from schemas import *
 from newspaper import Article
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI(title="Flashable")
 
@@ -21,6 +24,9 @@ app = FastAPI(title="Flashable")
 #         allow_methods=["*"],
 #         allow_headers=["*"],
 #     )
+
+templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 def use_route_names_as_operation_ids(app: FastAPI) -> None:
     """
@@ -49,6 +55,7 @@ def read_text(
 def read_file(
         file: UploadFile = File(...)
 ):
+    print("got file", file)
     return FlashcardSet(flashcards=[], source_text="file")
 
 @app.get("/link", response_model=FlashcardSet)
@@ -56,4 +63,9 @@ def read_link(
         link: str
 ):
     text = get_article_text(url=link)
+    print("got", link)
     return FlashcardSet(flashcards=[], source_text=text)
+
+@app.get("/", response_class=HTMLResponse)
+def read_main(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})

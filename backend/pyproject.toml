@@ -10,6 +10,8 @@ FastAPI = "^0.63.0"
 uvicorn = "^0.13.4"
 python-multipart = "^0.0.5"
 newspaper3k = "^0.2.8"
+aiofiles = "^0.6.0"
+Jinja2 = "^2.11.3"
 
 [tool.poetry.dev-dependencies]
 

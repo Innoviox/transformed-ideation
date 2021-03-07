@@ -11,6 +11,10 @@ let modal = () => {
 
 $("#export, .closemodal").click(modal);
 
+$(".delete-flashcard").click((e) => {
+    e.target.parentElement.remove();
+});
+
 // let t = new Tether({
 //     element: $("#element"),
 //     target: $("#tether"),

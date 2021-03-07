@@ -1,8 +1,33 @@
+let input_type = 0;
+
 let flip = () => {
     $(".flip-card-inner").toggleClass("flipped");
 };
 
-$("#extract, #upload-new").click(flip);
+$("#extract").click(() => {
+    let fdata = new FormData();
+    if (input_type === 0) {
+        fdata.append("link", $("#url").val());
+    } else {
+        fdata.append("file", document.getElementById('file').files[0]);
+    }
+
+    $.ajax({
+        url: "/link",
+        data: fdata,
+        cache: false,
+        processData: false,
+        contentType: false,
+        type: 'POST',
+        success: function (dataofconfirm) {
+            flip();
+        }
+    });
+});
+
+$("#upload-new").click(() => {
+    flip();
+});
 
 let modal = () => {
     $("html").toggleClass("is-clipped");
@@ -24,6 +49,7 @@ $("#add").click(add);
 $(document).ready(add);
 
 $('#file').change(() => {
+    input_type = 1;
     $("#file-holder").toggleClass("has-name");
     $(".file-name").text(document.getElementById("file").files[0].name).toggleClass("is-hidden");
     $("#col-b").removeClass("is-4").addClass("is-2");
@@ -34,6 +60,7 @@ $('#file').change(() => {
 });
 
 $("#enter-url-button").click(() => {
+    input_type = 0;
     $("#file-holder").toggleClass("has-name");
     $(".file-name").text($("#file").val()).toggleClass("is-hidden");
     $("#col-b").removeClass("is-2").addClass("is-4");

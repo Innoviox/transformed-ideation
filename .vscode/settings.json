@@ -1,0 +1,4 @@
+{
+    "editor.fontLigatures": false,
+    "python.analysis.extraPaths": ["./app", "./backend"],
+}

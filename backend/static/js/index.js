@@ -7,22 +7,30 @@ let flip = () => {
 $("#extract").click(() => {
     let fdata = new FormData();
     if (input_type === 0) {
-        fdata.append("link", $("#url").val());
+        $.ajax({
+            url: "http://127.0.0.1:8000/link?link=" + $("#url").val(),
+            cache: false,
+            processData: false,
+            contentType: false,
+            type: 'GET',
+            success: function (dataofconfirm) {
+                flip();
+            }
+        });
     } else {
         fdata.append("file", document.getElementById('file').files[0]);
+        $.ajax({
+            url: "http://127.0.0.1:8000/file",
+            data: fdata,
+            cache: false,
+            processData: false,
+            contentType: false,
+            type: 'GET',
+            success: function (dataofconfirm) {
+                flip();
+            }
+        });
     }
-
-    $.ajax({
-        url: "/link",
-        data: fdata,
-        cache: false,
-        processData: false,
-        contentType: false,
-        type: 'POST',
-        success: function (dataofconfirm) {
-            flip();
-        }
-    });
 });
 
 $("#upload-new").click(() => {

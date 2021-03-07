@@ -1,5 +1,8 @@
 
-# %%
+from fastapi import FastAPI, File, UploadFile, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import HTMLResponse
+from fastapi.routing import APIRoute
 from schemas import *
 from fastapi.routing import APIRoute
 from fastapi import FastAPI, File, UploadFile
@@ -11,6 +14,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 from question_generation.pipelines import pipeline
+from fastapi.templating import Jinja2Templates
 
 # Utils
 
@@ -43,6 +47,8 @@ def startup_event():
 #         allow_headers=["*"],
 #     )
 
+templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 def use_route_names_as_operation_ids(app: FastAPI) -> None:
     """
@@ -68,6 +74,7 @@ def read_text(
 def read_file(
         file: UploadFile = File(...)
 ):
+    print("got file", file)
     return FlashcardSet(flashcards=[], source_text="file")
 
 

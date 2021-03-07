@@ -7,31 +7,30 @@ let flip = () => {
 $("#extract").click(() => {
     let fdata = new FormData();
     if (input_type === 0) {
-        $.ajax({
-            url: "http://127.0.0.1:8000/link?link=" + $("#url").val(),
-            cache: false,
-            processData: false,
-            contentType: false,
-            type: 'GET',
-            success: function (dataofconfirm) {
-                flip();
-            }
-        });
+        url = encodeURI("http://127.0.0.1:8000/link?url=" + $("#url").val())
+        let response = await fetch(url);
+        let questions = await response.json(); // read response body and parse as JSON
+        console.log(questions)
     } else {
-        fdata.append("file", document.getElementById('file').files[0]);
-        $.ajax({
-            url: "http://127.0.0.1:8000/file",
-            data: fdata,
-            cache: false,
-            processData: false,
-            contentType: false,
-            type: 'GET',
-            success: function (dataofconfirm) {
-                flip();
-            }
-        });
+        url = encodeURI("http://127.0.0.1:8000/link?url=" + $("#url").val())
+        let response = await fetch(url);
+        let questions = await response.json(); // read response body and parse as JSON
+        console.log(questions)
+        // fdata.append("file", document.getElementById('file').files[0]);
+        // $.ajax({
+        //     url: "http://127.0.0.1:8000/file",
+        //     data: fdata,
+        //     cache: false,
+        //     processData: false,
+        //     contentType: false,
+        //     type: 'GET',
+        //     success: function (res) {
+        //         console.log(res)
+        //     }
+        // });
     }
 });
+
 
 $("#upload-new").click(() => {
     flip();
@@ -77,3 +76,5 @@ $("#enter-url-button").click(() => {
     $("#enter-url-input").show();
     $("#enter-url-button").toggleClass("is-hidden").hide();
 });
+
+

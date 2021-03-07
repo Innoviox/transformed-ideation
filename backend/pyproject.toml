@@ -8,6 +8,7 @@ authors = ["Nonameentered <matthewshu88@gmail.com>"]
 python = "^3.8.3"
 FastAPI = "^0.63.0"
 uvicorn = "^0.13.4"
+python-multipart = "^0.0.5"
 
 [tool.poetry.dev-dependencies]
 

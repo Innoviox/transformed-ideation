@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 from fastapi.routing import APIRoute
 from schemas import *
 
@@ -40,7 +40,7 @@ def read_text(
 
 @app.get("/file", response_model=FlashcardSet)
 def read_file(
-        file: str
+        file: UploadFile = File(...)
 ):
     return FlashcardSet(flashcards=[], source_text="file")
 

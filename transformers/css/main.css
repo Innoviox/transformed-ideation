@@ -1,0 +1,52 @@
+body {
+    padding: 50px;
+    background-color: #fbf9f1;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden
+}
+
+.is-queen-blue {
+    background-color: #33658A;
+    border-color: transparent;
+    color: #fff;
+}
+
+.flashcard {
+    border: 1px #000000 solid;
+    background-color: #ffffff;
+}
+
+.wrap {
+    display: flex;
+}
+
+.left {
+    flex-basis: 50%;
+}
+
+.right {
+    flex-basis: 50%;
+    height: 100vh;
+    overflow: auto;
+    padding: 12px;
+}
+
+.left::-webkit-scrollbar,
+.right::-webkit-scrollbar {
+    display: none;
+}
+
+.file-upload-full {
+    width: 100%;
+    padding-left: 35%;
+    /*padding-left: 0em;*/
+    justify-content: center;
+}
+
+.file {
+    text-align: center;
+}

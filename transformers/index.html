@@ -1,0 +1,106 @@
+<html>
+<head>
+    <link href="css/bulma.css" rel="stylesheet">
+    <link href="css/bulma-divider.css" rel="stylesheet">
+
+    <link href="css/flip.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="flip-card">
+    <div class="flip-card-inner">
+        <div class="flip-card-front">
+            <div class="columns is-centered">
+                <div class="column is-full has-text-centered"><h1 class="title">Flashable</h1></div>
+            </div>
+
+            <div class="columns is-centered">
+                <div class="column is-full has-text-centered"><h2 class="subtitle"><i>Next-Generation Flashcard
+                    Creation</i></h2></div>
+            </div>
+
+            <form id="form1">
+                <div class="columns is-centered">
+                    <div class="column is-2" id="col-a"></div>
+                    <div class="column is-4" id="col-b">
+                        <div id="enter-url-input">
+                            <input class="input" type="text" placeholder="Enter Article URL" id="url">
+                        </div>
+                        <div id="enter-url-button" class="is-hidden" hidden>
+                            <a class="button is-queen-blue is-fullwidth">Enter Article URL</a>
+                        </div>
+                    </div>
+                    <!--<div class="column is-2"><a class="button is-queen-blue is-fullwidth">Upload File</a></div>-->
+                    <div class="column is-2" id="col-c">
+                        <div class="file is-fullwidth" id="file-holder">
+                            <label class="file-label">
+                                <input class="file-input" type="file" name="file" id="file">
+                                <span class="is-queen-blue file-cta file-upload-full" id="file-upload">
+                                    <span class="file-label is-fullwidth">Upload File</span>
+                                </span>
+                                <span class="file-name is-hidden">
+
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="column is-2"><a class="button is-queen-blue is-fullwidth" id="extract">Extract</a></div>
+                    <div class="column is-2"></div>
+                </div>
+
+                <div class="columns">
+                    <div class="column is-2"></div>
+                    <div class="column is-8">
+                        <textarea class="textarea" placeholder="Paste text here..."></textarea>
+                    </div>
+                    <div class="column is-2"></div>
+                </div>
+            </form>
+        </div>
+        <div class="flip-card-back">
+            <div class="wrap">
+                <div class="left" id="element">
+                    <div class="pb-1"><a class="button is-queen-blue is-fullwidth" id="upload-new">Upload New</a></div>
+                    <textarea readonly class="textarea" placeholder="Paste text here..."></textarea>
+                </div>
+                <div class="divider is-vertical"></div>
+                <div class="right" id="tether">
+                    <div class="columns pb-1">
+                        <div class="column is-1"></div>
+                        <a class="column is-4 is-fullwidth button is-queen-blue" id="add">Add Flashcard</a>
+                        <div class="column is-2"></div>
+                        <a class="column is-4 is-fullwidth button is-queen-blue" id="export">Export</a>
+                        <div class="column is-1"></div>
+                    </div>
+                    <div id="flashcards">
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="export-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete closemodal" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success">Save changes</button>
+            <button class="button closemodal">Cancel</button>
+        </footer>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

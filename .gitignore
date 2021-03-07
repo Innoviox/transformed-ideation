@@ -157,3 +157,5 @@ dmypy.json
 
 # PyCharm
 .idea/
+transformers/.idea
+transformers/node_modules/

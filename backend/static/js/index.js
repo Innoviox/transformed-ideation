@@ -13,7 +13,7 @@ $("#extract").click(() => {
     if (url.value != "") {
         console.log("url");
         
-        var payload = {"payload": url.value}
+        var payload = {"payload": url.value};
         axios.post('/link', payload);
     } else if (file.value != "") {
         console.log("file");
@@ -34,6 +34,7 @@ $("#extract").click(() => {
     // console.log(url.value);
     // console.log(file.value);
     // console.log(raw.value);
+    flip();
 });
 
 
@@ -68,12 +69,49 @@ $("#upload-new").click(() => {
     // });
 });
 
-let modal = () => {
-    $("html").toggleClass("is-clipped");
-    $("#export-modal").toggleClass("is-active");
+// let modal = () => {
+//     $("html").toggleClass("is-clipped");
+//     $("#export-modal").toggleClass("is-active");
+// };
+//
+// $("#export, .closemodal").click(modal);
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+Array.prototype.pairs = function (func) {
+    for (var i = 0; i < this.length - 1; i++) {
+        for (var j = i; j < this.length - 1; j++) {
+            func([this[i], this[j+1]]);
+        }
+    }
 };
 
-$("#export, .closemodal").click(modal);
+$("#export").click(() => {
+    let s = "";
+    let k = 0;
+    for (let i of $(".flashcard").find(":input[type=text]")) {
+        s += i.value;
+        if (k % 2 === 0) {
+            s += "\t";
+        } else {
+            s += "\n";
+        }
+        k += 1;
+    }
+
+    download("export.tsv", s);
+});
 
 let del = () => $(".delete-flashcard").click((e) => {
     e.target.parentElement.remove();
@@ -97,7 +135,7 @@ $('#input-file').change(() => {
     $("#col-c").removeClass("is-2").addClass("is-4");
     $("#file-upload").removeClass("file-upload-full");
     $("#enter-url-input").hide();
-    $("#enter-url-button").toggleClass("is-hidden").show();
+    $("#enter-url-button").removeClass("is-hidden").show();
 });
 
 $("#enter-url-button").click(() => {
@@ -108,7 +146,7 @@ $("#enter-url-button").click(() => {
     $("#col-c").removeClass("is-4").addClass("is-2");
     $("#file-upload").addClass("file-upload-full");
     $("#enter-url-input").show();
-    $("#enter-url-button").toggleClass("is-hidden").hide();
+    $("#enter-url-button").addClass("is-hidden").hide();
 });
 
 

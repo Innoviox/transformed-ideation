@@ -3,6 +3,7 @@ from typing import Optional, List
 from fastapi import FastAPI, File, UploadFile
 from fastapi.routing import APIRoute
 from schemas import *
+from newspaper import Article
 
 app = FastAPI(title="Flashable")
 
@@ -32,6 +33,12 @@ def use_route_names_as_operation_ids(app: FastAPI) -> None:
         if isinstance(route, APIRoute):
             route.operation_id = route.name
 
+def get_article_text(url: str):
+   article = Article(url)
+   article.download()
+   article.parse()
+   return article.text
+
 @app.get("/text", response_model=FlashcardSet)
 def read_text(
         text: str
@@ -48,4 +55,5 @@ def read_file(
 def read_link(
         link: str
 ):
-    return FlashcardSet(flashcards=[], source_text=link)
+    text = get_article_text(url=link)
+    return FlashcardSet(flashcards=[], source_text=text)

@@ -79,7 +79,7 @@ def read_file(
         file: UploadFile = File(...)
 ):
     text = read(file)
-    print("got file", file)
+    print("got file", file, "mimetype", file.content_type)
     print(text)
     return FlashcardSet(flashcards=[], source_text=text)
 

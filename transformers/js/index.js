@@ -22,3 +22,12 @@ let add = () => {
 
 $("#add").click(add);
 $(document).ready(add);
+
+$('#file').change(() => {
+    $("#file-holder").toggleClass("has-name");
+    $(".file-name").text($("#file").val()).toggleClass("is-hidden");
+    // $('#col-a').hide();
+    $("#col-b").hide();
+    $("#col-c").removeClass("is-2").addClass("is-6");
+    $("#file-upload").removeClass("file-upload-full");
+});

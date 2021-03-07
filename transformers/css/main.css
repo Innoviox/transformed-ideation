@@ -39,3 +39,14 @@ html, body {
 .right::-webkit-scrollbar {
     display: none;
 }
+
+.file-upload-full {
+    /*width: 100%;*/
+    padding-left: 35%;
+    /*padding-left: 0em;*/
+    justify-content: center;
+}
+
+.file {
+    text-align: center;
+}

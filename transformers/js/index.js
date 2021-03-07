@@ -1,9 +1,15 @@
 let flip = () => {
     $(".flip-card-inner").toggleClass("flipped");
-}
+};
 
-$("#extract").click(flip);
-$("#upload-new").click(flip);
+$("#extract, #upload-new").click(flip);
+
+let modal = () => {
+    $("html").toggleClass("is-clipped");
+    $("#export-modal").toggleClass("is-active");
+};
+
+$("#export, .closemodal").click(modal);
 
 // let t = new Tether({
 //     element: $("#element"),

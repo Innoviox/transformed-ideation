@@ -18,11 +18,11 @@ def read(file):
             return ' '.join(content)
     elif mimetype == "text/plain":
         with file.file as f:
-            return f.read()
+            return remNewline(f.read())
     else:
         print("File type", mimetype, "not recognized.")
 
 def remNewline(text):
-    remHyphenated = re.sub("-(?:\\n|\\f)", "", text)
-    remNew = re.sub("(?<!-)(?:\\n|\\f)", " ", remHyphenated)
+    remHyphenated = re.sub("-(?:\\n|\\f|\\r)+", "", text)
+    remNew = re.sub("(?<!-)(?:\\n|\\f|\\r)+", " ", remHyphenated)
     return remNew

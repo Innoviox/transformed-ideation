@@ -8,13 +8,13 @@ from fastapi.routing import APIRoute
 from fastapi import FastAPI, File, UploadFile
 from typing import Optional, List
 from newspaper import Article
-from typing import List, Optional
 
-from fastapi import FastAPI
 from pydantic import BaseModel
 
 from pipelines import qg_pipeline as pipeline
 from fastapi.templating import Jinja2Templates
+
+from readFromFile import read
 
 # Utils
 
@@ -78,8 +78,10 @@ def read_text(
 def read_file(
         file: UploadFile = File(...)
 ):
+    text = read(file)
     print("got file", file)
-    return FlashcardSet(flashcards=[], source_text="file")
+    print(text)
+    return FlashcardSet(flashcards=[], source_text=text)
 
 
 @app.get("/link", response_model=FlashcardSet)

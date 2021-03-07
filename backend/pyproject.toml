@@ -12,6 +12,8 @@ python-multipart = "^0.0.5"
 newspaper3k = "^0.2.8"
 aiofiles = "^0.6.0"
 Jinja2 = "^2.11.3"
+lxml = "^4.6.2"
+python-docx = "^0.8.10"
 
 [tool.poetry.dev-dependencies]
 
